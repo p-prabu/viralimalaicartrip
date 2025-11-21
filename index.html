@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julina Car Trip | Car Rental Service - Viralimalai</title>
+    <meta name="description" content="Affordable & Reliable Car Rentals in Viralimalai, Tamil Nadu. Book Innova, Ertiga, Tempo Traveller for local and outstation trips.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Poppins for English, Noto Sans Tamil for Tamil) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Noto Sans Tamil', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* Animation for lang switch */
+        .lang-fade {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50">
+
+    <!-- Top Bar -->
+    <div class="bg-brand-900 text-white text-sm py-2">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-4 mb-2 md:mb-0">
+                <span><i class="fas fa-map-marker-alt mr-1 text-accent-500"></i> <span data-i18n="location">Viralimalai, Tamil Nadu</span></span>
+                <a href="mailto:support@julina.in" class="hover:text-accent-500 transition"><i class="fas fa-envelope mr-1 text-accent-500"></i> support@julina.in</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+917339223702" class="hover:text-accent-500 transition"><i class="fas fa-phone-alt mr-1 text-accent-500"></i> +91 7339223702</a>
+                <span class="hidden md:inline">|</span>
+                <a href="tel:+917760024085" class="hover:text-accent-500 transition"><i class="fas fa-phone-alt mr-1 text-accent-500"></i> +91 7760024085</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-brand-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:bg-accent-500 transition">
+                    J
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold text-gray-900 leading-tight tracking-tight">JULINA <span class="text-brand-600">CAR TRIP</span></span>
+                    <span class="text-xs text-gray-500 font-medium tracking-widest" data-i18n="tagline">RENTAL - VIRALIMALAI</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+                <a href="#home" class="hover:text-brand-600 transition" data-i18n="nav_home">Home</a>
+                <a href="#about" class="hover:text-brand-600 transition" data-i18n="nav_about">About</a>
+                <a href="#fleet" class="hover:text-brand-600 transition" data-i18n="nav_fleet">Our Fleet</a>
+                <a href="#tours" class="hover:text-brand-600 transition" data-i18n="nav_tours">Packages</a>
+                
+                <!-- Language Switcher Desktop -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 px-3 py-1 border border-brand-200 rounded-md hover:bg-brand-50 text-brand-700 transition">
+                    <i class="fas fa-language"></i>
+                    <span id="lang-text-desktop" class="font-bold">தமிழ்</span>
+                </button>
+
+                <a href="#contact" class="px-5 py-2 bg-brand-600 text-white rounded-full hover:bg-brand-700 transition shadow-lg shadow-brand-600/30" data-i18n="nav_contact">Contact Us</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center gap-4">
+                 <!-- Language Switcher Mobile -->
+                 <button onclick="toggleLanguage()" class="flex items-center gap-1 px-2 py-1 border border-brand-200 rounded-md hover:bg-brand-50 text-brand-700 transition text-sm">
+                    <span id="lang-text-mobile" class="font-bold">தமிழ்</span>
+                </button>
+                <button id="mobile-menu-btn" class="text-2xl text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="flex flex-col p-4 gap-4 font-medium">
+                <a href="#home" class="hover:text-brand-600" data-i18n="nav_home">Home</a>
+                <a href="#about" class="hover:text-brand-600" data-i18n="nav_about">About</a>
+                <a href="#fleet" class="hover:text-brand-600" data-i18n="nav_fleet">Our Fleet</a>
+                <a href="#tours" class="hover:text-brand-600" data-i18n="nav_tours">Packages</a>
+                <a href="#contact" class="text-brand-600" data-i18n="nav_contact">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-[500px] md:h-[600px] flex items-center justify-center text-center px-4 relative">
+        <div class="max-w-3xl text-white animate-fade-in-up">
+            <span class="bg-accent-500 text-white px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-4 inline-block shadow-lg" data-i18n="hero_badge">NO HIDDEN CHARGES</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight" data-i18n="hero_title">Reliable Car Rentals in <span class="text-accent-500">Viralimalai</span></h1>
+            <p class="text-lg md:text-xl mb-8 opacity-90 font-light" data-i18n="hero_desc">Safety, Comfort, and Affordable prices. Book now and pay on arrival.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://wa.me/917339223702?text=Hi, I want to book a car from Julina Car Trip." target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition transform hover:scale-105 shadow-xl flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-2xl"></i> <span data-i18n="btn_whatsapp">Book via WhatsApp</span>
+                </a>
+                <a href="tel:+917339223702" class="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg transition shadow-xl flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> <span data-i18n="btn_call">Call Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <div class="bg-brand-800 py-8">
+        <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center">
+            <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-check-circle text-3xl text-accent-500"></i>
+                <h3 class="font-bold" data-i18n="feat_pay">Pay on Arrival</h3>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-user-shield text-3xl text-accent-500"></i>
+                <h3 class="font-bold" data-i18n="feat_safe">Safe Drivers</h3>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-spray-can text-3xl text-accent-500"></i>
+                <h3 class="font-bold" data-i18n="feat_clean">Sanitized Cars</h3>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <i class="fas fa-clock text-3xl text-accent-500"></i>
+                <h3 class="font-bold" data-i18n="feat_support">24/7 Support</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-i18n="about_title">Welcome to <span class="text-brand-600">Julina Car Trip</span></h2>
+                <div class="w-20 h-1 bg-accent-500 mx-auto rounded mb-6"></div>
+                <p class="text-gray-600 leading-relaxed" data-i18n="about_desc">
+                    We are the leading car rental service provider in <strong>Viralimalai, Tamil Nadu</strong>. Whether you need a taxi for local temple visits, outstation pilgrimage tours, or airport drops, we guarantee a safe and comfortable journey.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12" data-i18n="fleet_title">Our Premium Fleet</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Car 1: Innova Crysta -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300 border border-gray-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/2017_Toyota_Innova_Crysta_2.4_V_wagon_%282018-06-18%29.jpg" onerror="this.src='https://images.unsplash.com/photo-1566008885218-90abf9200ddb?q=80&w=800&auto=format&fit=crop'" alt="Innova Crysta" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 right-0 bg-accent-500 text-white px-3 py-1 text-sm font-bold rounded-tl-lg" data-i18n="tag_popular">Most Popular</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Toyota Innova Crysta</h3>
+                        <p class="text-gray-500 text-sm mb-4" data-i18n="desc_innova">Ideal for families. Spacious, comfortable AC ride.</p>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-user-friends"></i> 6+1 Seats
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-snowflake"></i> AC
+                            </div>
+                        </div>
+                        <a href="https://wa.me/917339223702?text=I want to book Innova Crysta" target="_blank" class="mt-6 w-full block text-center bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-lg font-medium transition" data-i18n="btn_book">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Car 2: Ertiga -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300 border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop" alt="Maruti Ertiga" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Maruti Ertiga</h3>
+                        <p class="text-gray-500 text-sm mb-4" data-i18n="desc_ertiga">Budget-friendly choice for small groups & families.</p>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-user-friends"></i> 6 Seats
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-gas-pump"></i> Diesel/CNG
+                            </div>
+                        </div>
+                        <a href="https://wa.me/917339223702?text=I want to book Ertiga" target="_blank" class="mt-6 w-full block text-center bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-lg font-medium transition" data-i18n="btn_book">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Car 3: Sedan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300 border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=800&auto=format&fit=crop" alt="Sedan" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Sedan (Etios/Dzire)</h3>
+                        <p class="text-gray-500 text-sm mb-4" data-i18n="desc_sedan">Perfect for couples, business trips, or small families.</p>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-user-friends"></i> 4 Seats
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-briefcase"></i> Large Boot
+                            </div>
+                        </div>
+                        <a href="https://wa.me/917339223702?text=I want to book a Sedan" target="_blank" class="mt-6 w-full block text-center bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-lg font-medium transition" data-i18n="btn_book">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Car 4: Tempo Traveller -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300 border border-gray-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop" alt="Tempo Traveller" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tempo Traveller</h3>
+                        <p class="text-gray-500 text-sm mb-4" data-i18n="desc_tempo">12 to 16 Seater options available. Pushback seats.</p>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-users"></i> 12-16 Seats
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i class="fas fa-couch"></i> Luxury
+                            </div>
+                        </div>
+                        <a href="https://wa.me/917339223702?text=I want to book Tempo Traveller" target="_blank" class="mt-6 w-full block text-center bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-lg font-medium transition" data-i18n="btn_book">Book Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section id="tours" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2" data-i18n="tours_title">Popular Tour Packages</h2>
+                    <p class="text-gray-500" data-i18n="tours_sub">Explore Tamil Nadu with our customized travel plans.</p>
+                </div>
+                <a href="https://wa.me/917339223702" class="text-brand-600 font-bold hover:underline mt-4 md:mt-0"><span data-i18n="customize_trip">Customize your trip</span> <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tour 1 -->
+                <div class="rounded-lg overflow-hidden shadow-lg relative group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Viralimalai_Murugan_Temple.jpg" onerror="this.src='https://images.unsplash.com/photo-1582510003544-4d00b7f9bd04?q=80&w=600&auto=format&fit=crop'" alt="Viralimalai" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 p-4 text-white">
+                        <h3 class="text-xl font-bold mb-1" data-i18n="tour1_title">Viralimalai Temple</h3>
+                        <p class="text-sm opacity-90 mb-3" data-i18n="tour1_desc">Local Pickup & Drop packages.</p>
+                        <a href="https://wa.me/917339223702?text=Enquiry for Viralimalai Temple Package" class="text-xs bg-accent-500 px-3 py-1 rounded text-white font-bold uppercase tracking-wide" data-i18n="btn_enquire">Enquire</a>
+                    </div>
+                </div>
+                
+                <!-- Tour 2 -->
+                <div class="rounded-lg overflow-hidden shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1567209036335-935656581075?q=80&w=600&auto=format&fit=crop" alt="Trichy" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 p-4 text-white">
+                        <h3 class="text-xl font-bold mb-1" data-i18n="tour2_title">Trichy Tour</h3>
+                        <p class="text-sm opacity-90 mb-3" data-i18n="tour2_desc">Srirangam, Rockfort, Samayapuram.</p>
+                        <a href="https://wa.me/917339223702?text=Enquiry for Trichy Tour" class="text-xs bg-accent-500 px-3 py-1 rounded text-white font-bold uppercase tracking-wide" data-i18n="btn_enquire">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Tour 3 -->
+                <div class="rounded-lg overflow-hidden shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1584259091716-43224832dfb1?q=80&w=600&auto=format&fit=crop" alt="Madurai" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 p-4 text-white">
+                        <h3 class="text-xl font-bold mb-1" data-i18n="tour3_title">Madurai & Rameswaram</h3>
+                        <p class="text-sm opacity-90 mb-3" data-i18n="tour3_desc">2 Days / 3 Days Spiritual Package.</p>
+                        <a href="https://wa.me/917339223702?text=Enquiry for Madurai Rameswaram Package" class="text-xs bg-accent-500 px-3 py-1 rounded text-white font-bold uppercase tracking-wide" data-i18n="btn_enquire">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Tour 4 -->
+                <div class="rounded-lg overflow-hidden shadow-lg relative group">
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600&auto=format&fit=crop" alt="Kodaikanal" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 p-4 text-white">
+                        <h3 class="text-xl font-bold mb-1" data-i18n="tour4_title">Kodaikanal Hills</h3>
+                        <p class="text-sm opacity-90 mb-3" data-i18n="tour4_desc">Honeymoon & Family Holiday Trips.</p>
+                        <a href="https://wa.me/917339223702?text=Enquiry for Kodaikanal Package" class="text-xs bg-accent-500 px-3 py-1 rounded text-white font-bold uppercase tracking-wide" data-i18n="btn_enquire">Enquire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="bg-brand-700 py-12 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4" data-i18n="cta_title">Planning a Trip? Call us for the Best Rates!</h2>
+            <p class="mb-8 text-brand-100 max-w-xl mx-auto" data-i18n="cta_sub">We provide the most competitive rates in Viralimalai. No advance payment required for booking.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+917339223702" class="bg-white text-brand-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition shadow-lg">
+                    <i class="fas fa-phone mr-2"></i> +91 7339223702
+                </a>
+                <a href="https://wa.me/917339223702" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i> <span data-i18n="btn_whatsapp_short">WhatsApp Us</span>
+                </a>
+            </div>
+        </div>
+        <!-- Decorative circles -->
+        <div class="absolute top-0 left-0 -ml-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-10"></div>
+        <div class="absolute bottom-0 right-0 -mr-16 -mb-16 w-64 h-64 rounded-full bg-white opacity-10"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6" data-i18n="contact_title">Get In Touch</h2>
+                    <p class="text-gray-600 mb-8" data-i18n="contact_desc">Have a question or want to book a ride? Reach out to us via phone, email, or visit our office in Viralimalai.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 text-xl shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900" data-i18n="contact_loc_title">Our Location</h3>
+                                <p class="text-gray-600" data-i18n="contact_loc_val">Viralimalai, Tamil Nadu, India</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 text-xl shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900" data-i18n="contact_phone_title">Phone Numbers</h3>
+                                <p class="text-gray-600">+91 7339223702</p>
+                                <p class="text-gray-600">+91 7760024085</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 text-xl shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900" data-i18n="contact_email_title">Email Us</h3>
+                                <a href="mailto:support@julina.in" class="text-brand-600 hover:underline">support@julina.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simple Map Visualization (Placeholder) -->
+                <div class="bg-white p-2 rounded-xl shadow-md h-80 relative overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15689.01125466734!2d78.5669129!3d10.6030684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa6200c662f289%3A0x15f6c6f8e6c1788c!2sViralimalai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1709123456789!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t-4 border-brand-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4">Julina Car Trip</h3>
+                <p class="mb-4" data-i18n="footer_desc">Reliable, safe, and affordable car rental services in Viralimalai. We are committed to making your journey memorable.</p>
+            </div>
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4" data-i18n="footer_links">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:text-brand-500 transition" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#about" class="hover:text-brand-500 transition" data-i18n="nav_about">About Us</a></li>
+                    <li><a href="#fleet" class="hover:text-brand-500 transition" data-i18n="nav_fleet">Our Fleet</a></li>
+                    <li><a href="#tours" class="hover:text-brand-500 transition" data-i18n="nav_tours">Popular Tours</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4" data-i18n="footer_payment">We Accept</h3>
+                <div class="flex gap-4 text-2xl">
+                    <i class="fab fa-google-pay text-white hover:text-brand-500 cursor-pointer"></i>
+                    <i class="fas fa-money-bill-wave text-white hover:text-brand-500 cursor-pointer"></i>
+                    <i class="fas fa-university text-white hover:text-brand-500 cursor-pointer"></i>
+                </div>
+                <p class="mt-4 text-sm">© 2024 Julina Car Trip. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky WhatsApp Button -->
+    <a href="https://wa.me/917339223702?text=Hello, I need a car rental." target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition transform hover:scale-110 z-50 animate-bounce-slow">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Javascript for Mobile Menu & Translations -->
+    <script>
+        // Mobile Menu Logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // --- Translations Configuration ---
+        const translations = {
+            en: {
+                location: "Viralimalai, Tamil Nadu",
+                tagline: "RENTAL - VIRALIMALAI",
+                nav_home: "Home",
+                nav_about: "About",
+                nav_fleet: "Our Fleet",
+                nav_tours: "Packages",
+                nav_contact: "Contact Us",
+                hero_badge: "NO HIDDEN CHARGES",
+                hero_title: 'Reliable Car Rentals in <span class="text-accent-500">Viralimalai</span>',
+                hero_desc: "Safety, Comfort, and Affordable prices. Book now and pay on arrival.",
+                btn_whatsapp: "Book via WhatsApp",
+                btn_call: "Call Now",
+                feat_pay: "Pay on Arrival",
+                feat_safe: "Safe Drivers",
+                feat_clean: "Sanitized Cars",
+                feat_support: "24/7 Support",
+                about_title: 'Welcome to <span class="text-brand-600">Julina Car Trip</span>',
+                about_desc: "We are the leading car rental service provider in <strong>Viralimalai, Tamil Nadu</strong>. Whether you need a taxi for local temple visits, outstation pilgrimage tours, or airport drops, we guarantee a safe and comfortable journey.",
+                fleet_title: "Our Premium Fleet",
+                tag_popular: "Most Popular",
+                desc_innova: "Ideal for families. Spacious, comfortable AC ride.",
+                desc_ertiga: "Budget-friendly choice for small groups & families.",
+                desc_sedan: "Perfect for couples, business trips, or small families.",
+                desc_tempo: "12 to 16 Seater options available. Pushback seats.",
+                btn_book: "Book Now",
+                tours_title: "Popular Tour Packages",
+                tours_sub: "Explore Tamil Nadu with our customized travel plans.",
+                customize_trip: "Customize your trip",
+                tour1_title: "Viralimalai Temple",
+                tour1_desc: "Local Pickup & Drop packages.",
+                tour2_title: "Trichy Tour",
+                tour2_desc: "Srirangam, Rockfort, Samayapuram.",
+                tour3_title: "Madurai & Rameswaram",
+                tour3_desc: "2 Days / 3 Days Spiritual Package.",
+                tour4_title: "Kodaikanal Hills",
+                tour4_desc: "Honeymoon & Family Holiday Trips.",
+                btn_enquire: "Enquire",
+                cta_title: "Planning a Trip? Call us for the Best Rates!",
+                cta_sub: "We provide the most competitive rates in Viralimalai. No advance payment required for booking.",
+                btn_whatsapp_short: "WhatsApp Us",
+                contact_title: "Get In Touch",
+                contact_desc: "Have a question or want to book a ride? Reach out to us via phone, email, or visit our office in Viralimalai.",
+                contact_loc_title: "Our Location",
+                contact_loc_val: "Viralimalai, Tamil Nadu, India",
+                contact_phone_title: "Phone Numbers",
+                contact_email_title: "Email Us",
+                footer_desc: "Reliable, safe, and affordable car rental services in Viralimalai. We are committed to making your journey memorable.",
+                footer_links: "Quick Links",
+                footer_payment: "We Accept",
+                lang_btn: "தமிழ்"
+            },
+            ta: {
+                location: "விராலிமலை, தமிழ்நாடு",
+                tagline: "கார் வாடகை - விராலிமலை",
+                nav_home: "முகப்பு",
+                nav_about: "எங்களை பற்றி",
+                nav_fleet: "வாகனங்கள்",
+                nav_tours: "சுற்றுலா",
+                nav_contact: "தொடர்புக்கு",
+                hero_badge: "மறைமுக கட்டணம் இல்லை",
+                hero_title: '<span class="text-accent-500">விராலிமலையில்</span> நம்பகமான கார் வாடகை சேவை',
+                hero_desc: "பாதுகாப்பு, வசதி மற்றும் குறைவான கட்டணம். இப்போதே முன்பதிவு செய்யுங்கள்.",
+                btn_whatsapp: "WhatsApp முன்பதிவு",
+                btn_call: "அழைக்க",
+                feat_pay: "பயணத்திற்கு பின் பணம்",
+                feat_safe: "பாதுகாப்பான ஓட்டுநர்கள்",
+                feat_clean: "சுத்தமான கார்கள்",
+                feat_support: "24/7 சேவை",
+                about_title: '<span class="text-brand-600">ஜூலினா கார் ட்ரிப்</span> உங்களை வரவேற்கிறது',
+                about_desc: "நாங்கள் <strong>விராலிமலை, தமிழ்நாட்டில்</strong> முன்னணி கார் வாடகை சேவையை வழங்குகிறோம். உள்ளூர் கோயில் தரிசனம், வெளியூர் சுற்றுலா அல்லது விமான நிலைய சவாரி என எதுவாக இருந்தாலும், பாதுகாப்பான பயணத்தை உறுதி செய்கிறோம்.",
+                fleet_title: "எங்கள் வாகனங்கள்",
+                tag_popular: "பிரபலமானது",
+                desc_innova: "குடும்பங்களுக்கு ஏற்றது. விசாலமான, வசதியான AC பயணம்.",
+                desc_ertiga: "சிறிய குழுக்கள் மற்றும் குடும்பங்களுக்கு ஏற்றது.",
+                desc_sedan: "தம்பதிகள் மற்றும் சிறிய அலுவலக பயணங்களுக்கு ஏற்றது.",
+                desc_tempo: "12 முதல் 16 இருக்கைகள். சொகுசு இருக்கைகள்.",
+                btn_book: "முன்பதிவு செய்ய",
+                tours_title: "சுற்றுலா திட்டங்கள்",
+                tours_sub: "தமிழ்நாட்டின் சிறந்த இடங்களை எங்களுடன் சுற்றிப் பாருங்கள்.",
+                customize_trip: "தனிப்பயன் பயணம்",
+                tour1_title: "விராலிமலை முருகன் கோயில்",
+                tour1_desc: "உள்ளூர் பிக்-அப் மற்றும் டிராப் வசதி.",
+                tour2_title: "திருச்சி சுற்றுலா",
+                tour2_desc: "ஸ்ரீரங்கம், மலைக்கோட்டை, சமயபுரம்.",
+                tour3_title: "மதுரை & ராமேஸ்வரம்",
+                tour3_desc: "2 நாட்கள் / 3 நாட்கள் ஆன்மீகப் பயணம்.",
+                tour4_title: "கொடைக்கானல் மலைகள்",
+                tour4_desc: "தேன்நிலவு மற்றும் குடும்ப சுற்றுலா.",
+                btn_enquire: "விசாரி",
+                cta_title: "சுற்றுலா செல்ல திட்டமா? சிறந்த கட்டணத்திற்கு அழையுங்கள்!",
+                cta_sub: "விராலிமலையில் மிகக் குறைந்த கட்டணத்தில் வாகனங்களை வழங்குகிறோம். முன்பணம் தேவையில்லை.",
+                btn_whatsapp_short: "WhatsApp செய்யவும்",
+                contact_title: "தொடர்பு கொள்ள",
+                contact_desc: "வாகனம் தேவைப்படுகிறதா? தொலைபேசி, மின்னஞ்சல் அல்லது நேரில் எங்களை தொடர்பு கொள்ளவும்.",
+                contact_loc_title: "எங்கள் முகவரி",
+                contact_loc_val: "விராலிமலை, தமிழ்நாடு, இந்தியா",
+                contact_phone_title: "தொலைபேசி எண்கள்",
+                contact_email_title: "மின்னஞ்சல்",
+                footer_desc: "விராலிமலையில் நம்பகமான, பாதுகாப்பான மற்றும் மலிவு விலை கார் வாடகை சேவை. உங்கள் பயணத்தை சிறப்பாக்க நாங்கள் காத்திருக்கிறோம்.",
+                footer_links: "விரைவு இணைப்புகள்",
+                footer_payment: "ஏற்றுக்கொள்ளப்படும் முறைகள்",
+                lang_btn: "ENG"
+            }
+        };
+
+        // State
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            const newLang = currentLang === 'en' ? 'ta' : 'en';
+            updateContent(newLang);
+            currentLang = newLang;
+            
+            // Update button text logic
+            const desktopBtn = document.getElementById('lang-text-desktop');
+            const mobileBtn = document.getElementById('lang-text-mobile');
+            
+            // If currently English, show 'Tamil' as option. If Tamil, show 'ENG'
+            const nextLangLabel = currentLang === 'en' ? 'தமிழ்' : 'ENG';
+            
+            desktopBtn.innerText = nextLangLabel;
+            mobileBtn.innerText = nextLangLabel;
+        }
+
+        function updateContent(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    // Add fade animation class
+                    el.classList.remove('lang-fade');
+                    void el.offsetWidth; // trigger reflow
+                    el.classList.add('lang-fade');
+                    
+                    // Update text (using innerHTML to allow spans/bold tags)
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
